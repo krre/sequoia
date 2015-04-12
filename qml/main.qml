@@ -15,8 +15,17 @@ ApplicationWindow {
         Menu {
             title: qsTr("File")
             MenuItem {
+                text: qsTr("New...")
+            }
+
+            MenuItem {
                 text: qsTr("Open...")
             }
+
+            MenuItem {
+                text: qsTr("Recent")
+            }
+
             MenuItem {
                 text: qsTr("Exit")
                 onTriggered: Qt.quit();
