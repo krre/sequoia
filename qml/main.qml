@@ -7,8 +7,8 @@ ApplicationWindow {
     id: mainRoot
     property string version: "0.1.0"
     title: "Sequoia"
-    width: 640
-    height: 480
+    width: 800
+    height: 600
     visible: true
 
     menuBar: MenuBar {
