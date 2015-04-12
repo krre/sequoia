@@ -1,12 +1,10 @@
 function createDynamicObject(parent, url, properties) {
-    var component = Qt.createComponent(url);
+    var component = Qt.createComponent(url)
     var errorMessage = component.errorString()
-    if (errorMessage !== "") {
-        console.log("Error loading component " + url + ":", errorMessage);
-    } else if (properties) {
-        return component.createObject(parent, properties)
+    if (errorMessage) {
+        print("Error loading component " + url + ":", errorMessage)
     } else {
-        return component.createObject(parent)
+        return component.createObject(parent, properties ? properties : {})
     }
 }
 
