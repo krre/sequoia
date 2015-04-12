@@ -9,5 +9,7 @@ RESOURCES += qml.qrc
 DISTFILES += \
     qml/main.qml \
     qml/About.qml \
-    qml/utils.js
+    qml/utils.js \
+    qml/enums.js \
+    qml/RepoDialog.qml
 

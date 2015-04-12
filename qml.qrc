@@ -3,5 +3,7 @@
         <file>qml/main.qml</file>
         <file>qml/About.qml</file>
         <file>qml/utils.js</file>
+        <file>qml/enums.js</file>
+        <file>qml/RepoDialog.qml</file>
     </qresource>
 </RCC>
