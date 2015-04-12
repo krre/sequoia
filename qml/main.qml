@@ -16,19 +16,24 @@ ApplicationWindow {
             title: qsTr("File")
             MenuItem {
                 text: qsTr("New...")
+                shortcut: "Ctrl+N"
             }
 
             MenuItem {
                 text: qsTr("Open...")
+                shortcut: "Ctrl+O"
             }
 
             MenuItem {
                 text: qsTr("Recent")
             }
 
+            MenuSeparator {}
+
             MenuItem {
                 text: qsTr("Exit")
-                onTriggered: Qt.quit();
+                shortcut: "Ctrl+Q"
+                onTriggered: Qt.quit()
             }
         }
 
