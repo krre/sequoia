@@ -52,6 +52,7 @@ ApplicationWindow {
     }
 
     Utils {
+        id: utils
 
     }
 }

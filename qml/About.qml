@@ -6,7 +6,8 @@ MessageDialog {
     title: qsTr("About Sequoia")
     standardButtons: StandardButton.Ok
     text: String("<h3>Sequoia %1</h3>
-          Copyright (c) 2015, Vladimir Zarypov<br>").arg(mainRoot.version)
+          Build date: %2<br>
+          Copyright (c) 2015, Vladimir Zarypov<br>").arg(mainRoot.version).arg(utils.buildDate)
     onVisibleChanged: if (!visible) root.destroy()
     Component.onCompleted: open()
 }
