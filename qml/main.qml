@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
+import Sequoia.Lib 1.0
 import "utils.js" as Utils
 import "enums.js" as Enums
 
@@ -48,5 +49,9 @@ ApplicationWindow {
                 onTriggered: Utils.createDynamicObject(mainRoot, "qrc:/qml/About.qml")
             }
         }
+    }
+
+    Utils {
+
     }
 }

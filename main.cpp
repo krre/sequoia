@@ -1,13 +1,13 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
-#include "cpp/corelib.h"
+#include "cpp/utils.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    qmlRegisterType<CoreLib>("Sequoia", 1, 0, "CoreLib");
+    qmlRegisterType<Utils>("Sequoia.Lib", 1, 0, "Utils");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
