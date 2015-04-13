@@ -7,7 +7,7 @@ MessageDialog {
     standardButtons: StandardButton.Ok
     text: String("<h3>Sequoia %1</h3>
           Build date: %2<br>
-          Copyright (c) 2015, Vladimir Zarypov<br>").arg(mainRoot.version).arg(utils.buildDate)
+          Copyright (c) 2015, Vladimir Zarypov<br>").arg(mainRoot.version).arg(UTILS.buildDate)
     onVisibleChanged: if (!visible) root.destroy()
     Component.onCompleted: open()
 }
