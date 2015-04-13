@@ -13,7 +13,8 @@ DISTFILES += \
     qml/About.qml \
     qml/utils.js \
     qml/enums.js \
-    qml/RepoDialog.qml
+    qml/RepoDialog.qml \
+    qml/MainMenu.qml
 
 HEADERS += \
     cpp/utils.h \
