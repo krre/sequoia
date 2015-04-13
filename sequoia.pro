@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    cpp/corelib.cpp
 
 RESOURCES += qml.qrc
 
@@ -12,4 +13,7 @@ DISTFILES += \
     qml/utils.js \
     qml/enums.js \
     qml/RepoDialog.qml
+
+HEADERS += \
+    cpp/corelib.h
 
