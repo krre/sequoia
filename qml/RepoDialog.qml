@@ -13,7 +13,7 @@ FileDialog {
 
     onAccepted: {
         switch (mode) {
-            case Enums.RepoNew: print("new repo", fileUrl); break
+            case Enums.RepoNew: repository.create(fileUrl); break
             case Enums.RepoOpen: print("open repo", fileUrl); break
         }
     }

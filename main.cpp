@@ -3,10 +3,13 @@
 #include <QtQml>
 #include "cpp/utils.h"
 #include "cpp/settings.h"
+#include "cpp/repository.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    qmlRegisterType<Repository>("Sequoia.Lib", 1, 0, "Repository");
 
     Settings settings;
     Utils utils;

@@ -4,7 +4,8 @@ QT += qml quick widgets
 
 SOURCES += main.cpp \
     cpp/utils.cpp \
-    cpp/settings.cpp
+    cpp/settings.cpp \
+    cpp/repository.cpp
 
 RESOURCES += qml.qrc
 
@@ -18,5 +19,6 @@ DISTFILES += \
 
 HEADERS += \
     cpp/utils.h \
-    cpp/settings.h
+    cpp/settings.h \
+    cpp/repository.h
 
