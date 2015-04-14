@@ -12,8 +12,11 @@ bool Repository::open(QUrl filepath)
     if (QFile::exists(repoPath)) {
         return true;
     } else {
-        QDir().mkpath(repoPath);
-        QString targetPath = repoPath + QDir::separator() + filepath.fileName();
+        QDir dir;
+        dir.mkpath(repoPath);
+        dir.mkpath(repoPath + QDir::separator() + "meta");
+
+        QString targetPath = repoPath + QDir::separator() + filepath.fileName() + ".0";
         QFile::copy(sourcePath, targetPath);
         return false;
     }

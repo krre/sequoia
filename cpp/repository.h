@@ -12,9 +12,8 @@ public:
     Q_INVOKABLE bool open(QUrl filepath);
     Q_INVOKABLE void remove(QUrl filepath);
 
-signals:
-
-public slots:
+private:
+    long revision = 0;
 };
 
 #endif // REPOSITORY_H
