@@ -17,10 +17,6 @@ ApplicationWindow {
         id: repository
     }
 
-    MessageDialogBase {
-        id: messageDialog
-    }
-
     TabView {
         id: tabView
         anchors.fill: parent

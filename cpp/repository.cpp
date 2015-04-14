@@ -19,5 +19,11 @@ bool Repository::open(QUrl filepath)
     }
 }
 
+void Repository::remove(QUrl filepath)
+{
+    QDir dir(filepath.toLocalFile() + ".sequoia");
+    dir.removeRecursively();
+}
+
 
 

@@ -19,11 +19,19 @@ function openFile(fileUrl) {
     tab.setSource("qrc:/qml/TreeArea.qml", properties)
     tab.title = UTILS.urlToFileName(fileUrl)
     if (!result) {
-        messageDialog.text = qsTr("Created new repository")
-        messageDialog.open()
+        openMessageDialog(Enums.MessageInfo, qsTr("Created new repository"))
     }
 }
 
 function removeRepo() {
-    messageDialog.openForType(Enums.MessageQuestion, qsTr("Repository will be removed. Are you sure?"))
+    var messageDialog = openMessageDialog(Enums.MessageQuestion, qsTr("Repository will be removed. Are you sure?"))
+    messageDialog.yes.connect(function() {
+        var fileUrl = tabView.getTab(tabView.currentIndex).item.fileUrl
+        repository.remove(fileUrl)
+        tabView.removeTab(tabView.currentIndex)
+    })
+}
+
+function openMessageDialog(type, message) {
+    return createDynamicObject(mainRoot, "qrc:/qml/MessageDialogBase.qml", { type: type, text: message })
 }

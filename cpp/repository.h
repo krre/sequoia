@@ -10,6 +10,7 @@ public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
     Q_INVOKABLE bool open(QUrl filepath);
+    Q_INVOKABLE void remove(QUrl filepath);
 
 signals:
 
