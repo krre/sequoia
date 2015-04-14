@@ -10,7 +10,7 @@ ApplicationWindow {
     width: 800
     height: 600
     visible: true
-    menuBar: MainMenu {}
+    menuBar: MainMenu { id: mainMenu }
 
     Component.onCompleted: {
         x = (Screen.width - width) / 2

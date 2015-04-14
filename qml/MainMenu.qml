@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import "utils.js" as Utils
 
 MenuBar {
+    property alias recentFilesModel: recentFilesModel
     Menu {
         title: qsTr("File")
 
@@ -12,8 +13,35 @@ MenuBar {
             onTriggered: Utils.createDynamicObject(mainRoot, "qrc:/qml/RepoDialog.qml")
         }
 
-        MenuItem {
-            text: qsTr("Recent")
+        Menu {
+            id: recentFilesMenu
+            title: qsTr("Recent Files")
+            enabled: recentFilesModel.count > 0
+
+            Instantiator {
+                model: recentFilesModel
+
+                MenuItem {
+                    text: model.filePath
+                    onTriggered: print(text)
+                }
+
+                onObjectAdded: recentFilesMenu.insertItem(index, object)
+                onObjectRemoved: recentFilesMenu.removeItem(object)
+            }
+
+            MenuSeparator {
+                visible: recentFilesModel.count > 0
+            }
+
+            MenuItem {
+                text: qsTr("Clear Menu")
+                onTriggered: recentFilesModel.clear()
+            }
+
+            ListModel {
+                id: recentFilesModel
+            }
         }
 
         MenuSeparator {}
