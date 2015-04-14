@@ -11,6 +11,7 @@ ApplicationWindow {
     height: 600
     visible: true
     menuBar: MainMenu {}
+    flags: Qt.Dialog
 
     Repository {
         id: repository
