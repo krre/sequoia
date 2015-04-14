@@ -59,6 +59,24 @@ MenuBar {
     }
 
     Menu {
+        title: qsTr("Repository")
+        enabled: tabView.count > 0
+
+        MenuItem {
+            text: qsTr("Compress")
+        }
+
+        MenuItem {
+            text: qsTr("Extract")
+        }
+
+        MenuItem {
+            text: qsTr("Remove")
+            onTriggered: Utils.removeRepo()
+        }
+    }
+
+    Menu {
         title: qsTr("Help")
 
         MenuItem {

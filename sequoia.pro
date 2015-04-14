@@ -17,7 +17,8 @@ DISTFILES += \
     qml/RepoDialog.qml \
     qml/MainMenu.qml \
     qml/Node.qml \
-    qml/TreeArea.qml
+    qml/TreeArea.qml \
+    qml/MessageDialogBase.qml
 
 HEADERS += \
     cpp/utils.h \

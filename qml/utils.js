@@ -1,3 +1,5 @@
+.import "enums.js" as Enums
+
 function createDynamicObject(parent, url, properties) {
     var component = Qt.createComponent(url)
     var errorMessage = component.errorString()
@@ -20,4 +22,8 @@ function openFile(fileUrl) {
         messageDialog.text = qsTr("Created new repository")
         messageDialog.open()
     }
+}
+
+function removeRepo() {
+    messageDialog.openForType(Enums.MessageQuestion, qsTr("Repository will be removed. Are you sure?"))
 }

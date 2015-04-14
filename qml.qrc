@@ -8,5 +8,6 @@
         <file>qml/MainMenu.qml</file>
         <file>qml/Node.qml</file>
         <file>qml/TreeArea.qml</file>
+        <file>qml/MessageDialogBase.qml</file>
     </qresource>
 </RCC>

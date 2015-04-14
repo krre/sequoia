@@ -1,3 +1,4 @@
-var RepoNew = "repo-new"
-var RepoOpen = "repo-open"
-
+var MessageInfo = "info"
+var MessageQuestion = "question"
+var MessageWarning = "warning"
+var MessageError = "error"
