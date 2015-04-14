@@ -21,8 +21,4 @@ ApplicationWindow {
         id: tabView
         anchors.fill: parent
     }
-
-    Component {
-        TreeArea {}
-    }
 }
