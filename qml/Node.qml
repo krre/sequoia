@@ -19,10 +19,11 @@ Rectangle {
         spacing: 1
 
         Button {
+            property bool isFixed: true
             width: 17
             height: 17
-            text: "F"
-            tooltip: qsTr("Fixation")
+            text: isFixed ? "G" : "F"
+            tooltip: isFixed ? qsTr("Go") : qsTr("Fixation")
         }
 
         Button {
