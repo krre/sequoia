@@ -17,7 +17,12 @@ ApplicationWindow {
         id: repository
     }
 
-    TreeArea {
+    TabView {
+        id: tabView
         anchors.fill: parent
+    }
+
+    Component {
+        TreeArea {}
     }
 }

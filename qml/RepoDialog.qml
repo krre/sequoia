@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Dialogs 1.1
 import "enums.js" as Enums
+import "utils.js" as Utils
 
 FileDialog {
     id: root
@@ -13,8 +14,8 @@ FileDialog {
 
     onAccepted: {
         switch (mode) {
-            case Enums.RepoNew: repository.create(fileUrl); break
-            case Enums.RepoOpen: print("open repo", fileUrl); break
+            case Enums.RepoNew: Utils.createRepo(fileUrl); break
+            case Enums.RepoOpen: Utils.openRepo(fileUrl); break
         }
     }
 

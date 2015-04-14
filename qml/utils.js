@@ -8,3 +8,12 @@ function createDynamicObject(parent, url, properties) {
     }
 }
 
+function createRepo(fileUrl) {
+    repository.create(fileUrl)
+    tabView.addTab(UTILS.urlToFileName(fileUrl))
+}
+
+function openRepo(fileUrl) {
+    repository.open(fileUrl)
+}
+

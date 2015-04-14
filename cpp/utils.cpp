@@ -1,4 +1,11 @@
 #include "utils.h"
 
-#include <QDir>
+QString Utils::urlToPath(QUrl url)
+{
+    return url.toLocalFile();
+}
 
+QString Utils::urlToFileName(QUrl url)
+{
+    return url.fileName();
+}

@@ -11,6 +11,7 @@ public:
     ~Repository() {}
 
     Q_INVOKABLE void create(QUrl filepath);
+    Q_INVOKABLE void open(QUrl filepath);
 
 signals:
 

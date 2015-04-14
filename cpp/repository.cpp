@@ -16,5 +16,10 @@ void Repository::create(QUrl filepath)
     }
 }
 
+void Repository::open(QUrl filepath)
+{
+
+}
+
 
 
