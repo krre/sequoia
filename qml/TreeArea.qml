@@ -4,8 +4,8 @@ Rectangle {
     property url fileUrl
 
     Node {
-        x: 100
-        y: 100
+        x: 10
+        y: 10
     }
 }
 
