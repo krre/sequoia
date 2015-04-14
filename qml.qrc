@@ -6,5 +6,7 @@
         <file>qml/enums.js</file>
         <file>qml/RepoDialog.qml</file>
         <file>qml/MainMenu.qml</file>
+        <file>qml/Node.qml</file>
+        <file>qml/TreeArea.qml</file>
     </qresource>
 </RCC>
