@@ -11,7 +11,11 @@ ApplicationWindow {
     height: 600
     visible: true
     menuBar: MainMenu {}
-    flags: Qt.Dialog
+
+    Component.onCompleted: {
+        x = (Screen.width - width) / 2
+        y = (Screen.height - height) / 2
+    }
 
     Repository {
         id: repository
