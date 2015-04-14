@@ -5,7 +5,7 @@ Repository::Repository(QObject *parent) : QObject(parent)
 
 }
 
-void Repository::create(QUrl filepath)
+void Repository::open(QUrl filepath)
 {
     QString sourcePath = filepath.toLocalFile();
     QString repoPath = sourcePath + ".sequoia";
@@ -14,11 +14,6 @@ void Repository::create(QUrl filepath)
         QString targetPath = repoPath + QDir::separator() + filepath.fileName();
         QFile::copy(sourcePath, targetPath);
     }
-}
-
-void Repository::open(QUrl filepath)
-{
-
 }
 
 

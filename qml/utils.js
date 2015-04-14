@@ -8,16 +8,11 @@ function createDynamicObject(parent, url, properties) {
     }
 }
 
-function createRepo(fileUrl) {
-    repository.create(fileUrl)
+function openFile(fileUrl) {
+    repository.open(fileUrl)
     var tab = tabView.addTab("")
     tabView.currentIndex = tabView.count - 1
     var properties = {}
     tab.setSource("qrc:/qml/TreeArea.qml", properties)
     tab.title = UTILS.urlToFileName(fileUrl)
 }
-
-function openRepo(fileUrl) {
-    repository.open(fileUrl)
-}
-
