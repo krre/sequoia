@@ -9,10 +9,15 @@ function createDynamicObject(parent, url, properties) {
 }
 
 function openFile(fileUrl) {
-    repository.open(fileUrl)
+    var result = repository.open(fileUrl)
     var tab = tabView.addTab("")
     tabView.currentIndex = tabView.count - 1
     var properties = {}
+    properties.fileUrl = fileUrl
     tab.setSource("qrc:/qml/TreeArea.qml", properties)
     tab.title = UTILS.urlToFileName(fileUrl)
+    if (!result) {
+        messageDialog.text = qsTr("Created new repository")
+        messageDialog.open()
+    }
 }

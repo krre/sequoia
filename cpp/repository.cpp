@@ -5,14 +5,17 @@ Repository::Repository(QObject *parent) : QObject(parent)
 
 }
 
-void Repository::open(QUrl filepath)
+bool Repository::open(QUrl filepath)
 {
     QString sourcePath = filepath.toLocalFile();
     QString repoPath = sourcePath + ".sequoia";
-    bool result = QDir().mkpath(repoPath);
-    if (result) {
+    if (QFile::exists(repoPath)) {
+        return true;
+    } else {
+        QDir().mkpath(repoPath);
         QString targetPath = repoPath + QDir::separator() + filepath.fileName();
         QFile::copy(sourcePath, targetPath);
+        return false;
     }
 }
 

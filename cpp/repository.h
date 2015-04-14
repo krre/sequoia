@@ -9,7 +9,7 @@ class Repository : public QObject
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
-    Q_INVOKABLE void open(QUrl filepath);
+    Q_INVOKABLE bool open(QUrl filepath);
 
 signals:
 
