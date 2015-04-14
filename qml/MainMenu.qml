@@ -105,6 +105,14 @@ MenuBar {
     }
 
     Menu {
+        title: qsTr("Tools")
+
+        MenuItem {
+            text: qsTr("Options...")
+        }
+    }
+
+    Menu {
         title: qsTr("Help")
 
         MenuItem {
