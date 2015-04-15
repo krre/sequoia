@@ -6,16 +6,9 @@ Rectangle {
     property bool isCurrentTab: mainRoot.currentTab === root
     property alias repository: repository
 
-    Timer {
-        id: timer
-        interval: 2000
-        running: isCurrentTab
-        repeat: true
-//        onTriggered: print("2 sec", root)
-    }
-
     Repository {
         id: repository
+        onIsModifyChanged: print(isModify)
     }
 
     Node {

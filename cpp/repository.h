@@ -6,15 +6,28 @@
 class Repository : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool isModify READ getIsModify NOTIFY onIsModifyChanged)
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
     Q_INVOKABLE bool initRepo(QUrl fileUrl);
     Q_INVOKABLE void remove();
     QString readHead();
+    QByteArray readBinaryFile(const QString &path);
+    bool isHashEquals();
     void writeHead(QString head);
+    bool getIsModify() { return m_isModify; }
+    void setIsModify(bool isModify);
+
+signals:
+    void onIsModifyChanged(bool isModify);
+
+private slots:
+    void onFileChanged(const QString &path);
 
 private:
+    QFileSystemWatcher fileSystemWatcher;
+    bool m_isModify = false;
     long revision = 0;
     QString repoPath;
     QString filePath;
