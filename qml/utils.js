@@ -11,14 +11,11 @@ function createDynamicObject(parent, url, properties) {
 }
 
 function openFile(fileUrl) {
-    var result = UTILS.openRepo(fileUrl)
-    var tab = tabView.addTab("")
-    tabView.currentIndex = tabView.count - 1
-    var properties = {}
-    properties.fileUrl = fileUrl
-    tab.setSource("qrc:/qml/TreeArea.qml", properties)
-    tab.title = UTILS.urlToFileName(fileUrl)
     addRecentFile(fileUrl)
+    var tab = tabView.addTab(UTILS.urlToFileName(fileUrl))
+    tabView.currentIndex = tabView.count - 1
+    tab.setSource("qrc:/qml/TreeArea.qml")
+    var result = currentTab.repository.initRepo(fileUrl)
     if (!result) {
         openMessageDialog(Enums.MessageInfo, qsTr("Created new repository"))
     }
@@ -27,8 +24,7 @@ function openFile(fileUrl) {
 function removeRepo() {
     var messageDialog = openMessageDialog(Enums.MessageQuestion, qsTr("Repository will be removed. Are you sure?"))
     messageDialog.yes.connect(function() {
-        var fileUrl = tabView.getTab(tabView.currentIndex).item.fileUrl
-        repository.remove(fileUrl)
+        currentTab.repository.remove()
         tabView.removeTab(tabView.currentIndex)
     })
 }
@@ -47,8 +43,8 @@ function addRecentFile(fileUrl) {
         }
     }
     model.insert(0, { filePath: filePath })
-    // max recent files is 10
-    if (model.count == 11) {
-        model.remove(10)
+    var maxRecentFiles = 10
+    if (model.count == maxRecentFiles + 1) {
+        model.remove(maxRecentFiles)
     }
 }

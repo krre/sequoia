@@ -9,12 +9,16 @@ class Repository : public QObject
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
-    Q_INVOKABLE void remove(QUrl filepath);
+    Q_INVOKABLE bool initRepo(QUrl fileUrl);
+    Q_INVOKABLE void remove();
     QString readHead();
     void setHead(QString head);
 
 private:
     long revision = 0;
+    QString repoPath;
+    QString filePath;
+    QString fileName;
 };
 
 #endif // REPOSITORY_H

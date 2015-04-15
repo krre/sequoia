@@ -4,7 +4,7 @@ import Sequoia.Lib 1.0
 Rectangle {
     id: root
     property bool isCurrentTab: mainRoot.currentTab === root
-    property url fileUrl
+    property alias repository: repository
 
     Timer {
         id: timer

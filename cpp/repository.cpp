@@ -5,9 +5,26 @@ Repository::Repository(QObject *parent) : QObject(parent)
 
 }
 
-void Repository::remove(QUrl filepath)
+bool Repository::initRepo(QUrl fileUrl)
 {
-    QDir dir(filepath.toLocalFile() + ".sequoia");
+    filePath = fileUrl.toLocalFile();
+    fileName = fileUrl.fileName();
+    repoPath = filePath + ".sequoia";
+    if (QFile::exists(repoPath)) {
+        return true;
+    } else {
+        QDir dir;
+        dir.mkpath(repoPath);
+        dir.mkpath(repoPath + QDir::separator() + "meta");
+        QString targetPath = repoPath + QDir::separator() + fileName + ".0";
+        QFile::copy(filePath, targetPath);
+        return false;
+    }
+}
+
+void Repository::remove()
+{
+    QDir dir(repoPath);
     dir.removeRecursively();
 }
 
