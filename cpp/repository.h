@@ -9,8 +9,9 @@ class Repository : public QObject
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
-    Q_INVOKABLE bool open(QUrl filepath);
     Q_INVOKABLE void remove(QUrl filepath);
+    QString readHead();
+    void setHead(QString head);
 
 private:
     long revision = 0;

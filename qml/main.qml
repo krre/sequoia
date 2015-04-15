@@ -1,7 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
-import Sequoia.Lib 1.0
 
 ApplicationWindow {
     id: mainRoot
@@ -17,16 +16,12 @@ ApplicationWindow {
         y = (Screen.height - height) / 2
     }
 
-    Repository {
-        id: repository
-    }
-
     Timer {
         id: timer
         interval: 2000
         running: true
         repeat: true
-        onTriggered: print("2 sec")
+//        onTriggered: print("2 sec")
     }
 
     TabView {

@@ -11,7 +11,7 @@ function createDynamicObject(parent, url, properties) {
 }
 
 function openFile(fileUrl) {
-    var result = repository.open(fileUrl)
+    var result = UTILS.openRepo(fileUrl)
     var tab = tabView.addTab("")
     tabView.currentIndex = tabView.count - 1
     var properties = {}
