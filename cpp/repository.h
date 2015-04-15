@@ -12,13 +12,16 @@ public:
     Q_INVOKABLE bool initRepo(QUrl fileUrl);
     Q_INVOKABLE void remove();
     QString readHead();
-    void setHead(QString head);
+    void writeHead(QString head);
 
 private:
     long revision = 0;
     QString repoPath;
     QString filePath;
     QString fileName;
+    QString metaPath;
+    QString headPath;
+    QString HEAD;
 };
 
 #endif // REPOSITORY_H
