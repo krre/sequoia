@@ -21,6 +21,14 @@ ApplicationWindow {
         id: repository
     }
 
+    Timer {
+        id: timer
+        interval: 2000
+        running: true
+        repeat: true
+        onTriggered: print("2 sec")
+    }
+
     TabView {
         id: tabView
         anchors.fill: parent
