@@ -9,22 +9,25 @@ bool Repository::initRepo(QUrl fileUrl)
     filePath = fileUrl.toLocalFile();
     fileName = fileUrl.fileName();
     repoPath = filePath + ".sequoia";
-    metaPath = repoPath + QDir::separator() + "meta";
-    headPath = metaPath + QDir::separator() + "HEAD";
+
+    QString metaPath = repoPath + QDir::separator() + "meta";
+    meta = new QSettings(metaPath, QSettings::IniFormat, this);
+    meta->setIniCodec("UTF-8");
+
     fileSystemWatcher.addPath(filePath);
     connect(&fileSystemWatcher, SIGNAL(fileChanged(const QString&)), this, SLOT(onFileChanged(const QString&)));
     if (QFile::exists(repoPath)) {
-        HEAD = readHead();
+        revision = meta->value("revision").toLongLong();
         setIsModify(!isHashEquals());
         return true;
     } else {
         QDir dir;
         dir.mkpath(repoPath);
-        dir.mkpath(metaPath);
-        QString headFile = fileName + ".0";
+        QString headFile = fileName + ".1";
+        meta->setValue("head", headFile);
+        meta->setValue("revision", "1");
         QString targetPath = repoPath + QDir::separator() + headFile;
         QFile::copy(filePath, targetPath);
-        writeHead(headFile);
         setIsModify(!isHashEquals());
         return false;
     }
@@ -34,17 +37,6 @@ void Repository::remove()
 {
     QDir dir(repoPath);
     dir.removeRecursively();
-}
-
-QString Repository::readHead()
-{
-    QFile file(headPath);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QByteArray byteArray;
-    while (!file.atEnd())
-        byteArray.append(file.readLine());
-
-    return byteArray;
 }
 
 QByteArray Repository::readBinaryFile(const QString &path)
@@ -61,19 +53,10 @@ bool Repository::isHashEquals()
     cryptographicHash.addData(readBinaryFile(filePath));
     QByteArray fileHash = cryptographicHash.result();
     cryptographicHash.reset();
-    cryptographicHash.addData(readBinaryFile(repoPath + QDir::separator() + HEAD));
+    QString head = meta->value("head").toString();
+    cryptographicHash.addData(readBinaryFile(repoPath + QDir::separator() + head));
     QByteArray headHash = cryptographicHash.result();
     return fileHash == headHash;
-}
-
-void Repository::writeHead(QString head)
-{
-    QFile file(headPath);
-    file.open(QIODevice::WriteOnly);
-    QTextStream out(&file);
-    out << head;
-    file.close();
-    HEAD = head;
 }
 
 void Repository::setIsModify(bool isModify)

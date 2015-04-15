@@ -12,10 +12,8 @@ public:
     ~Repository() {}
     Q_INVOKABLE bool initRepo(QUrl fileUrl);
     Q_INVOKABLE void remove();
-    QString readHead();
     QByteArray readBinaryFile(const QString &path);
     bool isHashEquals();
-    void writeHead(QString head);
     bool getIsModify() { return m_isModify; }
     void setIsModify(bool isModify);
 
@@ -28,13 +26,12 @@ private slots:
 private:
     QFileSystemWatcher fileSystemWatcher;
     bool m_isModify = false;
-    long revision = 0;
+    long revision = 1;
+    QSettings *meta;
     QString repoPath;
     QString filePath;
     QString fileName;
-    QString metaPath;
     QString headPath;
-    QString HEAD;
 };
 
 #endif // REPOSITORY_H

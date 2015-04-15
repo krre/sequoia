@@ -11,6 +11,10 @@ Rectangle {
         onIsModifyChanged: print(isModify)
     }
 
+    ListModel {
+        id: treeModel
+    }
+
     Node {
         x: 10
         y: 10
