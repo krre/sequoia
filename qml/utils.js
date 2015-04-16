@@ -48,3 +48,19 @@ function addRecentFile(fileUrl) {
         model.remove(maxRecentFiles)
     }
 }
+
+function saveRecentFiles(model) {
+    var list = []
+    for (var i = 0; i < model.count; i++) {
+        list.push(model.get(i).filePath)
+    }
+    SETTINGS.setRecentFiles(list)
+}
+
+function loadRecentFiles() {
+    var list = SETTINGS.getRecentFiles()
+    var model = mainMenu.recentFilesModel
+    for (var i = 0; i < list.length; i++) {
+        model.append({ filePath: list[i] })
+    }
+}

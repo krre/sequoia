@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
+import "utils.js" as Utils
 
 ApplicationWindow {
     id: mainRoot
@@ -15,6 +16,11 @@ ApplicationWindow {
     Component.onCompleted: {
         x = (Screen.width - width) / 2
         y = (Screen.height - height) / 2
+        Utils.loadRecentFiles()
+    }
+
+    Component.onDestruction: {
+        Utils.saveRecentFiles(mainMenu.recentFilesModel)
     }
 
     TabView {

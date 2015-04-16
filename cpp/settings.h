@@ -11,6 +11,8 @@ public:
     ~Settings() {}
     Q_INVOKABLE void setLang(QString lang);
     Q_INVOKABLE QString getLang();
+    Q_INVOKABLE void setRecentFiles(QStringList recentFilesModel);
+    Q_INVOKABLE QStringList getRecentFiles();
 
 private:
     QSettings *settings;

@@ -20,4 +20,26 @@ QString Settings::getLang()
     return settings->value("i18n/lang").toString();
 }
 
+void Settings::setRecentFiles(QStringList recentFilesModel)
+{
+    settings->remove("Recent");
 
+    settings->beginGroup("Recent");
+        for (int i = 0; i < recentFilesModel.count(); i++) {
+            settings->setValue(QString::number(i), recentFilesModel.at(i));
+        }
+    settings->endGroup();
+}
+
+QStringList Settings::getRecentFiles()
+{
+    settings->beginGroup("Recent");
+        QStringList keys = settings->allKeys();
+        QStringList values;
+        for (int i = 0; i < keys.count(); i++) {
+            values.append(settings->value(keys.at(i)).toString());
+        }
+    settings->endGroup();
+
+    return values;
+}
