@@ -19,15 +19,15 @@ bool Repository::initRepo(const QString &path)
     connect(&fileSystemWatcher, SIGNAL(fileChanged(const QString&)), this, SLOT(onFileChanged(const QString&)));
     if (QFile::exists(repoPath)) {
         revision = meta->value("revision").toLongLong();
+        head = meta->value("head").toLongLong();
         setIsModify(!isHashEquals());
         return true;
     } else {
         QDir dir;
         dir.mkpath(repoPath);
-        QString headFile = fileName + ".1";
-        meta->setValue("head", headFile);
+        meta->setValue("head", QString::number(head));
         meta->setValue("revision", "1");
-        QString targetPath = repoPath + QDir::separator() + headFile;
+        QString targetPath = repoPath + QDir::separator() + fileName + "." + QString::number(head);
         QFile::copy(filePath, targetPath);
         setIsModify(!isHashEquals());
         return false;

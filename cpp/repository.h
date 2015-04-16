@@ -29,6 +29,7 @@ private:
     QFileSystemWatcher fileSystemWatcher;
     bool m_isModify = false;
     long revision = 1;
+    long head = 1;
     QSettings *meta;
     QString repoPath;
     QString filePath;
