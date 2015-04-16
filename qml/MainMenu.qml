@@ -23,7 +23,7 @@ MenuBar {
 
                 MenuItem {
                     text: model.filePath
-                    onTriggered: print(text)
+                    onTriggered: Utils.openFile(text)
                 }
 
                 onObjectAdded: recentFilesMenu.insertItem(index, object)

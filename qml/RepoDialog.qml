@@ -5,7 +5,7 @@ import "utils.js" as Utils
 FileDialog {
     id: root
     title: qsTr("Open File")
-    onAccepted: Utils.openFile(fileUrl)
+    onAccepted: Utils.openFile(UTILS.urlToPath(fileUrl))
     onVisibleChanged: if (!visible) root.destroy()
     nameFilters: qsTr("All Files (*.*)")
     Component.onCompleted: open()

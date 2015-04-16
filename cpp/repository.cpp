@@ -4,10 +4,11 @@ Repository::Repository(QObject *parent) : QObject(parent)
 {
 }
 
-bool Repository::initRepo(QUrl fileUrl)
+bool Repository::initRepo(const QString &path)
 {
-    filePath = fileUrl.toLocalFile();
-    fileName = fileUrl.fileName();
+    filePath = path;
+    QUrl url(path);
+    fileName = url.fileName();
     repoPath = filePath + ".sequoia";
 
     QString metaPath = repoPath + QDir::separator() + "meta";

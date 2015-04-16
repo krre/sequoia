@@ -10,12 +10,12 @@ function createDynamicObject(parent, url, properties) {
     }
 }
 
-function openFile(fileUrl) {
-    addRecentFile(fileUrl)
-    var tab = tabView.addTab(UTILS.urlToFileName(fileUrl))
+function openFile(path) {
+    addRecentFile(path)
+    var tab = tabView.addTab(UTILS.urlToFileName(path))
     tabView.currentIndex = tabView.count - 1
     tab.setSource("qrc:/qml/TreeArea.qml")
-    var result = currentTab.repository.initRepo(fileUrl)
+    var result = currentTab.repository.initRepo(path)
     if (!result) {
         openMessageDialog(Enums.MessageInfo, qsTr("Created new repository"))
     }
@@ -33,16 +33,15 @@ function openMessageDialog(type, message) {
     return createDynamicObject(mainRoot, "qrc:/qml/MessageDialogBase.qml", { type: type, text: message })
 }
 
-function addRecentFile(fileUrl) {
-    var filePath = UTILS.urlToPath(fileUrl)
+function addRecentFile(path) {
     var model = mainMenu.recentFilesModel
     // prevention of duplication of filePath and raising it on top
     for (var i = 0; i < model.count; i++) {
-        if (model.get(i).filePath === filePath) {
+        if (model.get(i).filePath === path) {
             model.remove(i)
         }
     }
-    model.insert(0, { filePath: filePath })
+    model.insert(0, { filePath: path })
     var maxRecentFiles = 10
     if (model.count == maxRecentFiles + 1) {
         model.remove(maxRecentFiles)

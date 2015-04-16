@@ -10,7 +10,7 @@ class Repository : public QObject
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
-    Q_INVOKABLE bool initRepo(QUrl fileUrl);
+    Q_INVOKABLE bool initRepo(const QString &path);
     Q_INVOKABLE void remove();
     QByteArray readBinaryFile(const QString &path);
     bool isHashEquals();
