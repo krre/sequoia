@@ -45,7 +45,6 @@ QByteArray Repository::readBinaryFile(const QString &path)
     QFile file(path);
     file.open(QIODevice::ReadOnly);
     return file.readAll();
-
 }
 
 bool Repository::isHashEquals()
@@ -54,8 +53,7 @@ bool Repository::isHashEquals()
     cryptographicHash.addData(readBinaryFile(filePath));
     QByteArray fileHash = cryptographicHash.result();
     cryptographicHash.reset();
-    QString head = meta->value("head").toString();
-    cryptographicHash.addData(readBinaryFile(repoPath + QDir::separator() + head));
+    cryptographicHash.addData(readBinaryFile(repoPath + QDir::separator() + fileName + "." + QString::number(head)));
     QByteArray headHash = cryptographicHash.result();
     return fileHash == headHash;
 }
