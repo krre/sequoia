@@ -17,10 +17,12 @@ ApplicationWindow {
         x = (Screen.width - width) / 2
         y = (Screen.height - height) / 2
         Utils.loadRecentFiles()
+        Utils.loadSession()
     }
 
     Component.onDestruction: {
         Utils.saveRecentFiles(mainMenu.recentFilesModel)
+        Utils.saveSession()
     }
 
     TabView {

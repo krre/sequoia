@@ -7,6 +7,7 @@ class Repository : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool isModify READ getIsModify NOTIFY onIsModifyChanged)
+    Q_PROPERTY(QString path READ getPath CONSTANT)
 public:
     explicit Repository(QObject *parent = 0);
     ~Repository() {}
@@ -16,6 +17,7 @@ public:
     bool isHashEquals();
     bool getIsModify() { return m_isModify; }
     void setIsModify(bool isModify);
+    QString getPath() { return filePath; }
 
 signals:
     void onIsModifyChanged(bool isModify);

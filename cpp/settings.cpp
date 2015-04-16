@@ -20,13 +20,13 @@ QString Settings::getLang()
     return settings->value("i18n/lang").toString();
 }
 
-void Settings::setRecentFiles(QStringList recentFilesModel)
+void Settings::setRecentFiles(QStringList fileList)
 {
     settings->remove("Recent");
 
     settings->beginGroup("Recent");
-        for (int i = 0; i < recentFilesModel.count(); i++) {
-            settings->setValue(QString::number(i), recentFilesModel.at(i));
+        for (int i = 0; i < fileList.count(); i++) {
+            settings->setValue(QString::number(i), fileList.at(i));
         }
     settings->endGroup();
 }
@@ -34,6 +34,30 @@ void Settings::setRecentFiles(QStringList recentFilesModel)
 QStringList Settings::getRecentFiles()
 {
     settings->beginGroup("Recent");
+        QStringList keys = settings->allKeys();
+        QStringList values;
+        for (int i = 0; i < keys.count(); i++) {
+            values.append(settings->value(keys.at(i)).toString());
+        }
+    settings->endGroup();
+
+    return values;
+}
+
+void Settings::setSession(QStringList fileList)
+{
+    settings->remove("Session");
+
+    settings->beginGroup("Session");
+        for (int i = 0; i < fileList.count(); i++) {
+            settings->setValue(QString::number(i), fileList.at(i));
+        }
+        settings->endGroup();
+}
+
+QStringList Settings::getSession()
+{
+    settings->beginGroup("Session");
         QStringList keys = settings->allKeys();
         QStringList values;
         for (int i = 0; i < keys.count(); i++) {

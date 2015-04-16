@@ -63,3 +63,18 @@ function loadRecentFiles() {
         model.append({ filePath: list[i] })
     }
 }
+
+function saveSession() {
+    var list = []
+    for (var i = 0; i < tabView.count; i++) {
+        list.push(tabView.getTab(i).item.repository.path)
+    }
+    SETTINGS.setSession(list)
+}
+
+function loadSession() {
+    var list = SETTINGS.getSession()
+    for (var i = 0; i < list.length; i++) {
+        openFile(list[i])
+    }
+}
