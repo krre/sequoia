@@ -36,13 +36,6 @@ Rectangle {
         Button {
             width: 17
             height: 17
-            text: "B"
-            tooltip: qsTr("Branch")
-        }
-
-        Button {
-            width: 17
-            height: 17
             text: "D"
             tooltip: qsTr("Delete")
         }

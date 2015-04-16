@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import Sequoia.Lib 1.0
+import "utils.js" as Utils
 
 Rectangle {
     id: root
@@ -13,6 +14,7 @@ Rectangle {
         treeModel.revision = revision
         treeModel.description = ""
         head = treeModel
+        Utils.createDynamicObject(root, "qrc:/qml/Node.qml", { x: 10, y: 10 * revision })
     }
 
     function addLeafToHead(headRevision) {
@@ -31,6 +33,7 @@ Rectangle {
         head.description = ""
         head.parentProperty = childProp
         head.parentRevision = headRevision
+        Utils.createDynamicObject(root, "qrc:/qml/Node.qml", { x: 10, y: 10 * revision })
     }
 
     function findNode(node, revision) {
