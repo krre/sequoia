@@ -1,5 +1,4 @@
-#include <QApplication>
-#include <QQmlApplicationEngine>
+#include <QGuiApplication>
 #include <QtQml>
 #include "cpp/utils.h"
 #include "cpp/settings.h"
@@ -7,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     qmlRegisterType<Repository>("Sequoia.Lib", 1, 0, "Repository");
 
